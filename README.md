@@ -4,7 +4,6 @@ This project will be about a video streaming service that allows users to authen
 
 ## Team Members
 
-asdf
 - Sora Schlegel
 - Nazira Fakhrurradi
 
