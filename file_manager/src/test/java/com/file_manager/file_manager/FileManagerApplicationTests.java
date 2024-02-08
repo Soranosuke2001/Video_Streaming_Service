@@ -1,10 +1,10 @@
-package com.file_system.file_system_service;
+package com.file_manager.file_manager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FileSystemServiceApplicationTests {
+class FileManagerApplicationTests {
 
 	@Test
 	void contextLoads() {

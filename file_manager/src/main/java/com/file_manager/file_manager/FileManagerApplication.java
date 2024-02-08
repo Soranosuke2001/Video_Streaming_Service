@@ -1,13 +1,13 @@
-package com.file_system.file_system_service;
+package com.file_manager.file_manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FileSystemServiceApplication {
+public class FileManagerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FileSystemServiceApplication.class, args);
+		SpringApplication.run(FileManagerApplication.class, args);
 	}
 
 }
