@@ -1,0 +1,33 @@
+file_manager/HELP.md
+file_manager/target/
+file_manager/!.mvn/wrapper/maven-wrapper.jar
+file_manager/!**/src/main/**/target/
+file_manager/!**/src/test/**/target/
+
+### STS ###
+file_manager/.apt_generated
+file_manager/.classpath
+file_manager/.factorypath
+file_manager/.project
+file_manager/.settings
+file_manager/.springBeans
+file_manager/.sts4-cache
+
+### IntelliJ IDEA ###
+file_manager/.idea
+file_manager/*.iws
+file_manager/*.iml
+file_manager/*.ipr
+
+### NetBeans ###
+file_manager/nbproject/private/
+file_manager/nbbuild/
+file_manager/dist/
+file_manager/nbdist/
+file_manager/.nb-gradle/
+file_manager/build/
+file_manager/!**/src/main/**/build/
+file_manager/!**/src/test/**/build/
+
+### VS Code ###
+file_manager/.vscode/
