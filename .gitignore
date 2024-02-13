@@ -1,3 +1,5 @@
+# File Manager Files
+# --------------------------------------------
 file_manager/HELP.md
 file_manager/target/
 file_manager/!.mvn/wrapper/maven-wrapper.jar
@@ -31,3 +33,8 @@ file_manager/!**/src/test/**/build/
 
 ### VS Code ###
 file_manager/.vscode/
+
+
+# MySQL DB Files
+# --------------------------------------------
+MySQL_DB/my_env
