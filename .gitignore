@@ -38,3 +38,7 @@ file_manager/.vscode/
 # MySQL DB Files
 # --------------------------------------------
 MySQL_DB/my_env
+
+# Upload Video Files
+# --------------------------------------------
+upload_video/node_modules

@@ -13,20 +13,16 @@ import { Input } from "./ui/input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { formSchema } from "@/lib/validation/loginValidation";
 
 interface loginFormProps {}
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
-
-const loginForm: FC<loginFormProps> = ({}) => {
+const LoginForm: FC<loginFormProps> = ({}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      password: ""
     },
   });
 
@@ -46,10 +42,26 @@ const loginForm: FC<loginFormProps> = ({}) => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="bobby1" {...field} />
               </FormControl>
               <FormDescription>
-                This is your public display name.
+                Enter the username you used to sign up with
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" placeholder="*********" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is the password used to sign up with the corresponding username
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -61,4 +73,4 @@ const loginForm: FC<loginFormProps> = ({}) => {
   );
 };
 
-export default loginForm;
+export default LoginForm;
