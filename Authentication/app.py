@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import yaml
 from supabase import create_client, Client
 
@@ -20,14 +20,14 @@ def login():
   if request.method == 'POST':
 
     if len(data.data) == 0:
-      return "No such user exists!", 400, None
+      return "No such user exists!", 400
 
     user = data.data[0]
 
     if user['password'] == password:
-      return "Authentication successful!", 202, {'user_id': user['user_id']}
+      return jsonify({"message": "Authentication successful!", "user_id": user['user_id']}), 202
     else:
-      return "Invalid credentials!", 400, None
+      return "Invalid credentials!", 400
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -37,14 +37,14 @@ def register():
 
   if request.method == 'POST':
     if len(data.data) > 0:
-      return "User already exists!", 400, None
+      return "User already exists!", 400
 
     new_user = supabase.table('Users').insert({
       'username': username, 
       'password': password
       }).execute()
 
-    return "User is created!", 201, {'user_id': new_user.data[0]['user_id']}
+    return jsonify({"message": "User is created!", "user_id": new_user.data[0]['user_id']}), 201
 
 if __name__ == '__main__':
 
