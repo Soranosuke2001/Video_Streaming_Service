@@ -67,7 +67,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-neutral-300 text-black">Submit</Button>
+        <Button type="submit" variant="default" className="bg-neutral-200 text-black">Submit</Button>
       </form>
     </Form>
   );
