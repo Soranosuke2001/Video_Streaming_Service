@@ -39,6 +39,9 @@ file_manager/.vscode/
 # --------------------------------------------
 MySQL_DB/my_env
 
+# Authentication Files
+Authentication/venv
+
 # Upload Video Files
 # --------------------------------------------
 upload_video/node_modules
