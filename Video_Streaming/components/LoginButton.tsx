@@ -6,8 +6,8 @@ interface loginButtonProps {}
 
 const LoginButton: FC<loginButtonProps> = ({}) => {
   return (
-    <Link href="/login">
-      <Button>Login</Button>
+    <Link href="/auth/login">
+      <Button className="bg-stone-950">Login</Button>
     </Link>
   );
 };

@@ -1,17 +1,24 @@
-import LoginButton from "@/components/loginButton";
-import SignupButton from "@/components/signupButton";
-import Link from "next/link";
+import LoginButton from "@/components/LoginButton";
+import SignupButton from "@/components/SignupButton";
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="text-white flex flex-col justify-between h-screen">
       <div>
-        <h1>Video Streaming Service</h1>
-        <h2>ACIT 3855 Project 1</h2>
+        <div className="text-center">
+          <h1 className="text-6xl pt-24 font-serif">Video Streaming Service</h1>
+          <h2 className="text-xl pt-6">ACIT 3855 Project 1</h2>
+        </div>
+        <div className="flex pt-40 justify-center items-center">
+          <div className="text-lg">
+            To get Started, <LoginButton /> or <SignupButton />
+          </div>
+        </div>
       </div>
-      <div>
-        To get Started, <LoginButton /> or <SignupButton />
-      </div>
+      <footer className="text-center p-4">
+        <p>Created By: Sora & Nazira</p>
+      </footer>
     </main>
   );
 }
+

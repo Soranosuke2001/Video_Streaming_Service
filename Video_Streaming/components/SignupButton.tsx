@@ -6,8 +6,8 @@ interface signupButtonProps {}
 
 const SignupButton: FC<signupButtonProps> = ({}) => {
   return (
-    <Link href="/signup">
-      <Button>Signup</Button>
+    <Link href="/auth/signup">
+      <Button className="bg-stone-950">Signup</Button>
     </Link>
   );
 };
