@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "@/lib/validation/loginValidation";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import toast from "react-hot-toast";
 
 interface signupFormProps {}
 
@@ -45,11 +46,18 @@ const SignupForm: FC<signupFormProps> = ({}) => {
         body: JSON.stringify(values)
       })
 
+      console.log(response)
+
       if (!response.ok) {
-        // Toast message there was an error
-        console.log(response)
+        if (response.status === 400) {
+          toast.error("The username already exists. Please choose another one.")
+        } else {
+          toast.error("There was an error signing you up. Please try again later.")
+        }
         throw new Error("There was an error signing you up")
       }
+
+      toast.success("Signup successful, redirecting to login page...")
 
       setTimeout(() => {
         router.push("/auth/login")
