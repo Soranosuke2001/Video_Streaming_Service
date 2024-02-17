@@ -38,3 +38,6 @@ file_manager/.vscode/
 # MySQL DB Files
 # --------------------------------------------
 MySQL_DB/my_env
+
+# Authentication Files
+Authentication/venv
