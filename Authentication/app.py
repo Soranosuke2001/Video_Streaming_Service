@@ -33,7 +33,7 @@ def login():
     if user['password'] == password:
       return jsonify({"message": "Authentication successful!", "user_id": user['user_id']}), 202
     else:
-      return "Invalid credentials!", 400
+      return "Invalid credentials!", 404
 
 @app.route('/register', methods=['POST'])
 @cross_origin(origins=origins)

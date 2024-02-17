@@ -46,8 +46,6 @@ const SignupForm: FC<signupFormProps> = ({}) => {
         body: JSON.stringify(values)
       })
 
-      console.log(response)
-
       if (!response.ok) {
         if (response.status === 400) {
           toast.error("The username already exists. Please choose another one.")
