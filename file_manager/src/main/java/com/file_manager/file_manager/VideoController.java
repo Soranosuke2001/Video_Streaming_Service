@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-public class VideoConrtoller {
+public class VideoController {
     private S3Client s3Client;
     private String bucketName = "acit3495-video-streaming-storage";
 
