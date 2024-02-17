@@ -1,6 +1,6 @@
 "use client";
 
-import LoginForm from "@/components/LoginForm";
+import SignupForm from "@/components/SignupForm";
 import {
   Card,
   CardContent,
@@ -31,7 +31,7 @@ const page: FC<pageProps> = ({}) => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <LoginForm />
+            <SignupForm />
           </CardContent>
         </Card>
       </div>

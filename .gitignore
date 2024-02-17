@@ -41,6 +41,7 @@ MySQL_DB/my_env
 
 # Authentication Files
 Authentication/venv
+authentication/my_env
 
 # Upload Video Files
 # --------------------------------------------
