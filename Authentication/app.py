@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import cross_origin
 import yaml
 from supabase import create_client, Client
 
@@ -7,22 +8,27 @@ app = Flask(__name__)
 with open('app_conf.yml', 'r') as yamlfile:
   app_config = yaml.load(yamlfile, Loader=yaml.FullLoader)
 
+origins: str = app_config['cors']['origin']
 supabase_url: str = app_config['supabase']['url']
 supabase_key: str = app_config['supabase']['key']
 supabase: Client = create_client(supabase_url, supabase_key)
 
 @app.route('/login', methods=['POST'])
+@cross_origin(origins=origins)
 def login():
-  username = request.form['username']
-  password = request.form['password']
-  data = supabase.table('Users').select("*").eq('username', username).execute()
+  data = request.json
+
+  username = data.get('username')
+  password = data.get('password')
+
+  result = supabase.table('Users').select("*").eq('username', username).execute()
 
   if request.method == 'POST':
 
-    if len(data.data) == 0:
+    if len(result.data) == 0:
       return "No such user exists!", 400
 
-    user = data.data[0]
+    user = result.data[0]
 
     if user['password'] == password:
       return jsonify({"message": "Authentication successful!", "user_id": user['user_id']}), 202
@@ -30,9 +36,14 @@ def login():
       return "Invalid credentials!", 400
 
 @app.route('/register', methods=['POST'])
+@cross_origin(origins=origins)
 def register():
-  username = request.form['username']
-  password = request.form['password']
+  data = request.json
+
+  username = data.get('username')
+  password = data.get('password')
+
+  print(username, password)
   data = supabase.table('Users').select("*").eq('username', username).execute()
 
   if request.method == 'POST':
