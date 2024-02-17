@@ -34,7 +34,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-fit space-y-8">
         <FormField
           control={form.control}
           name="username"
@@ -42,7 +42,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="bobby1" {...field} />
+                <Input placeholder="bobby1" {...field} className="bg-neutral-900" />
               </FormControl>
               <FormDescription>
                 Enter the username you used to sign up with
@@ -58,7 +58,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="*********" {...field} />
+                <Input type="password" placeholder="*********" {...field} className="bg-neutral-900" />
               </FormControl>
               <FormDescription>
                 This is the password used to sign up with the corresponding username
@@ -67,7 +67,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="bg-neutral-300 text-black">Submit</Button>
       </form>
     </Form>
   );
