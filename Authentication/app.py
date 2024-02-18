@@ -35,8 +35,6 @@ def login():
       response = make_response(jsonify({"message": "Authentication successful!", "user_id": user['user_id']}))
       response.set_cookie("login", "validated", max_age=timedelta(days=7))
 
-      print(response.headers)
-
       return response, 202
     else:
       return "Invalid credentials!", 404
