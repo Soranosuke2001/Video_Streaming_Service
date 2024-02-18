@@ -39,6 +39,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_LOGIN_URL!, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -63,7 +64,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
       toast.success("Login successful, redirecting to home page...");
 
       setTimeout(() => {
-        router.push("/videos");
+        router.push("/videos")
       }, 2000);
     } catch (error) {
       console.log(error);
