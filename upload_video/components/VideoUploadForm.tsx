@@ -15,44 +15,55 @@ import { Input } from "./ui/input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { formSchema } from "@/lib/validation/loginValidation";
+import { formSchema } from "@/lib/validation/uploadVideoValidation";
 import { Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 interface loginFormProps {}
 
-const LoginForm: FC<loginFormProps> = ({}) => {
+const VideoUploadForm: FC<loginFormProps> = ({}) => {
   const router = useRouter();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
-      password: "",
+      video_title: "",
+      file_name: "",
     },
   });
 
+  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target.files && event.target.files.length > 0) {
+      setSelectedFile(event.target.files[0]);
+    }
+  }
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setSubmitting(true);
+
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_LOGIN_URL!, {
+      if (!selectedFile) {
+        toast.error("Please add a valid file before submitting");
+        return;
+      }
+      
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      const response = await fetch(process.env.NEXT_PUBLIC_UPLOAD_URL!, {
         method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
+        body: formData,
       });
 
       if (!response.ok) {
         if (response.status === 400) {
-          toast.error(
-            "The username does not exist"
-          );
+          toast.error("The username does not exist");
         } else if (response.status === 404) {
-          toast.error("Invalid password")
+          toast.error("Invalid password");
         } else {
           toast.error(
             "There was an error signing you in. Please try again later."
@@ -61,10 +72,10 @@ const LoginForm: FC<loginFormProps> = ({}) => {
         throw new Error("There was an error signing you in");
       }
 
-      toast.success("Login successful, redirecting to home page...");
+      toast.success("Video was successfully uploaded!");
 
       setTimeout(() => {
-        router.push("/upload/video")
+        router.refresh();
       }, 2000);
     } catch (error) {
       console.log(error);
@@ -78,10 +89,10 @@ const LoginForm: FC<loginFormProps> = ({}) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-fit space-y-8">
         <FormField
           control={form.control}
-          name="username"
+          name="video_title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Video Title</FormLabel>
               <FormControl>
                 <Input
                   placeholder="bobby1"
@@ -99,23 +110,20 @@ const LoginForm: FC<loginFormProps> = ({}) => {
         />
         <FormField
           control={form.control}
-          name="password"
+          name="file_name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Video File</FormLabel>
               <FormControl>
                 <Input
-                  type="password"
-                  placeholder="*********"
+                  id="video"
+                  type="file"
                   {...field}
-                  className="bg-neutral-900"
-                  required
+                  className="w-full text-sm text-neutral-300 cursor-pointer bg-neutral-900 file:text-white"
+                  onChange={handleFileChange}
                 />
               </FormControl>
-              <FormDescription>
-                This is the password used to sign up with the corresponding
-                username
-              </FormDescription>
+              <FormDescription>Select the MP4 file to upload</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -124,6 +132,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
           type="submit"
           variant="default"
           className="bg-neutral-200 text-black"
+          disabled={submitting || !selectedFile}
         >
           {submitting ? (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -136,4 +145,4 @@ const LoginForm: FC<loginFormProps> = ({}) => {
   );
 };
 
-export default LoginForm;
+export default VideoUploadForm;

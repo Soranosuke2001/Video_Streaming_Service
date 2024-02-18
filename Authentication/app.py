@@ -34,6 +34,7 @@ def login():
     if user['password'] == password:
       response = make_response(jsonify({"message": "Authentication successful!", "user_id": user['user_id']}))
       response.set_cookie("login", "validated", max_age=timedelta(days=7))
+      response.set_cookie("user_id", user['user_id'], max_age=timedelta(days=7))
 
       return response, 202
     else:
