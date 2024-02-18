@@ -19,7 +19,13 @@ const page: FC<pageProps> = ({}) => {
       });
   }, []);
 
-  return <>{isLoading ? <Loading /> : <VideoCard data={data} />}</>;
+  return (
+    <>
+      <div className="h-screen flex justify-evenly items-center">
+        {isLoading ? <Loading /> : <VideoCard data={data} />}
+      </div>
+    </>
+  );
 };
 
 export default page;

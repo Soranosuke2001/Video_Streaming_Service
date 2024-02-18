@@ -22,7 +22,9 @@ create_table1 = '''
                 (
                     id INT NOT NULL AUTO_INCREMENT,
                     user_id VARCHAR(250) NOT NULL,
+                    username VARCHAR(250) NOT NULL,
                     video_id VARCHAR(250) NOT NULL,
+                    video_title VARCHAR(250) NOT NULL,
                     video_link VARCHAR(100) NOT NULL,
                     date_created DATETIME NOT NULL,
                     CONSTRAINT gun_stat_pk PRIMARY KEY (id)

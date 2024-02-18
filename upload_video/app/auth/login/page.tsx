@@ -25,7 +25,7 @@ const page: FC<pageProps> = ({}) => {
         </div>
         <Card className="bg-black w-fit h-fit text-white">
           <CardHeader>
-            <CardTitle>Login to View Videos!</CardTitle>
+            <CardTitle>Login to Upload a Video!</CardTitle>
             <CardDescription className="text-gray-500">
               Once you login, you can view all the videos user's have uploaded
             </CardDescription>

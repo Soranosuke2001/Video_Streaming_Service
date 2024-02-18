@@ -38,11 +38,11 @@ def get_all_videos():
         return 200, "All stored videos fetched", videos
 
 
-def upload_video_link(user_id, video_link):
+def upload_video_link(user_id, username, video_link, video_title):
     session = DB_SESSION()
 
     try:
-        pr = VideoLink(user_id, video_link)
+        pr = VideoLink(user_id, username, video_link, video_title)
         session.add(pr)
         
         session.commit()

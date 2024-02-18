@@ -25,14 +25,16 @@ def fetch_all():
 
 
 @app.route('/upload/video', methods=['POST'])
-@cross_origin(origins="http://localhost:7000")
+@cross_origin(origins=["http://localhost:8200"])
 def upload_video():
     data = request.json
 
     user_id = data.get('user_id')
+    username = data.get('username')
+    video_title = data.get('video_title')
     video_link = data.get('video_link')
 
-    status_code, message = upload_video_link(user_id, video_link)
+    status_code, message = upload_video_link(user_id, username, video_link, video_title)
 
     return jsonify({"message": message}), status_code
 

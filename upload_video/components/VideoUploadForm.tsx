@@ -19,6 +19,7 @@ import { formSchema } from "@/lib/validation/uploadVideoValidation";
 import { Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { getCookie } from "cookies-next";
 
 interface loginFormProps {}
 
@@ -26,6 +27,9 @@ const VideoUploadForm: FC<loginFormProps> = ({}) => {
   const router = useRouter();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState<boolean>(false);
+
+  const user_id = getCookie('user_id')
+  const username = getCookie('username')
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,26 +53,35 @@ const VideoUploadForm: FC<loginFormProps> = ({}) => {
         toast.error("Please add a valid file before submitting");
         return;
       }
-      
+
       const formData = new FormData();
       formData.append("file", selectedFile);
 
-      const response = await fetch(process.env.NEXT_PUBLIC_UPLOAD_URL!, {
+      const response_java = await fetch(process.env.NEXT_PUBLIC_UPLOAD_URL!, {
         method: "POST",
         credentials: "include",
         body: formData,
       });
 
-      if (!response.ok) {
-        if (response.status === 400) {
-          toast.error("The username does not exist");
-        } else if (response.status === 404) {
-          toast.error("Invalid password");
-        } else {
-          toast.error(
-            "There was an error signing you in. Please try again later."
-          );
-        }
+      const video_data = {
+        user_id,
+        username,
+        video_title: values['video_title'],
+        video_link: `${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/${user_id}/${String(selectedFile.name)}`
+      }
+
+      console.log(video_data)
+
+      const response_mysql = await fetch(process.env.NEXT_PUBLIC_DB_URL!, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(video_data)
+      });
+
+      if (!response_java.ok || !response_mysql.ok) {
+        toast.error("File could not be saved to the database. Please try again later.")
         throw new Error("There was an error signing you in");
       }
 
