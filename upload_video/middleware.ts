@@ -11,12 +11,12 @@ export function middleware(request: NextRequest) {
     const { name, value } = cookie
 
     if (name === "login" && value === "validated") {
-        return NextResponse.rewrite(new URL("/upload/video", request.url))
+        return NextResponse.rewrite(new URL("/videos", request.url))
     } else {
         return NextResponse.rewrite(new URL("/", request.url))
     }
 }
  
 export const config = {
-  matcher: '/upload/videos/:path*',
+  matcher: '/videos/:path*',
 }

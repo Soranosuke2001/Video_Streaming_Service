@@ -25,7 +25,7 @@ def fetch_all():
 
 
 @app.route('/upload/video', methods=['POST'])
-@cross_origin(origins="http://localhost:4000")
+@cross_origin(origins="http://localhost:7000")
 def upload_video():
     data = request.json
 
