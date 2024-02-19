@@ -1,6 +1,6 @@
 import mysql.connector
 
-from helpers.read_config import database_config
+from read_config import database_config
 
 user, password, hostname, port, db = database_config()
 

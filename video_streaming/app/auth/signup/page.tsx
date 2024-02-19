@@ -27,7 +27,8 @@ const page: FC<pageProps> = ({}) => {
           <CardHeader>
             <CardTitle>Signup to Get Started!</CardTitle>
             <CardDescription className="text-gray-500">
-              Once you signup, you can view all the videos user's have uploaded
+              Once you signup, you can view all the videos user&lsquo;s have
+              uploaded
             </CardDescription>
           </CardHeader>
           <CardContent>

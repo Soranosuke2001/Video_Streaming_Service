@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine, and_
 from sqlalchemy.orm import sessionmaker
 
-from db.video_links import VideoLink
-from db.base import Base
-from helpers.read_config import database_config
+from video_links import VideoLink
+from base import Base
+from read_config import database_config
 user, password, hostname, port, db = database_config()
 
 DB_ENGINE = create_engine(f'mysql+pymysql://{user}:{password}@{hostname}:{port}/{db}')

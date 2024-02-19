@@ -34,10 +34,12 @@ file_manager/!**/src/test/**/build/
 ### VS Code ###
 file_manager/.vscode/
 
+# Pycache
+**/__pycache__/
 
 # MySQL DB Files
 # --------------------------------------------
-MySQL_DB/my_env
+db_app/my_env
 
 # Authentication Files
 authentication/venv

@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import cross_origin
 app = Flask(__name__)
 
-from db.db_queries import get_video_link, upload_video_link, get_all_videos
+from db_queries import get_video_link, upload_video_link, get_all_videos
 
 
 @app.route('/fetch/video', methods=['GET'])

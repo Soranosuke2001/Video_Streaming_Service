@@ -2,11 +2,9 @@
 
 import Loading from "@/components/Loading";
 import VideoCard from "@/components/VideoCard";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-interface pageProps {}
-
-const page: FC<pageProps> = ({}) => {
+const page = ({}) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

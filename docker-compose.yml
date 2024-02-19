@@ -1,66 +1,71 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  authentication:
-    build:
-      context: ./authentication
-      dockerfile: Dockerfile
-    ports: 
-      - "8090:8090"
-    networks:
-      - acit3495projectnetwork
+  # authentication:
+  #   build:
+  #     context: ./authentication
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8090:8090"
+  #   networks:
+  #     - acit3495projectnetwork
 
-  mysql-db:
+  mysql:
     image: mysql:latest
+    container_name: acit3495-mysql-server
+    restart: on-failure
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=videos
       - MYSQL_USER=sora
       - MYSQL_PASSWORD=sora
+      - MYSQL_HOST=localhost
     ports:
       - "3306:3306"
     networks:
       - acit3495projectnetwork
     volumes:
       - mysql-data:/var/lib/mysql
+    command: ["--upgrade=FORCE"]
 
-  db-app:
+  db_app:
     depends_on:
-      - mysql-db
+      mysql:
+        condition: service_started
     build:
-      context: ./mysql_db
+      context: ./db_app
       dockerfile: Dockerfile
     ports:
       - "8100:8100"
     networks:
       - acit3495projectnetwork
 
-  file-manager:
-    build:
-      context: ./file_manager
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
-    networks:
-      - acit3495projectnetwork
+  # file-manager:
+  #   build:
+  #     context: ./file_manager
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     - acit3495projectnetwork
 
-  upload-video:
-    build:
-      context: ./upload_video
-      dockerfile: Dockerfile
-    ports:
-      - "8200:8200"
-    networks:
-      - acit3495projectnetwork
+  # upload-video:
+  #   build:
+  #     context: ./upload_video
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8200:8200"
+  #   networks:
+  #     - acit3495projectnetwork
 
-  video-streaming:
-    build: 
-      context: ./video_streaming
-      dockerfile: Dockerfile
-    ports:
-      - "4000:4000"
-    networks:
-      - acit3495projectnetwork
+  # video-streaming:
+  #   build:
+  #     context: ./video_streaming
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "4000:4000"
+  #   networks:
+  #     - acit3495projectnetwork
 
 networks:
   acit3495projectnetwork:

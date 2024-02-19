@@ -4,7 +4,7 @@ WORKDIR /upload_video
 
 COPY . .
 
-RUN npm install --omit=dev
+RUN npm install 
 
 RUN npm run build
 

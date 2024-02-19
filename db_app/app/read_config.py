@@ -2,7 +2,7 @@ import yaml
 
 
 def database_config():
-    with open('./config/app_conf.yml', 'r') as file:
+    with open('app/app_conf.yml', 'r') as file:
         app_config = yaml.safe_load(file.read())
 
         user = app_config["datastore"]["user"]
