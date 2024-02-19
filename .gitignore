@@ -40,7 +40,7 @@ file_manager/.vscode/
 MySQL_DB/my_env
 
 # Authentication Files
-Authentication/venv
+authentication/venv
 authentication/my_env
 
 # Upload Video Files
