@@ -2,9 +2,11 @@
 
 import Loading from "@/components/Loading";
 import VideoCard from "@/components/VideoCard";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-const page = ({}) => {
+interface pageProps {}
+
+const Page: FC<pageProps> = ({}) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -26,4 +28,4 @@ const page = ({}) => {
   );
 };
 
-export default page;
+export default Page;
