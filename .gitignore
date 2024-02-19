@@ -1,7 +1,6 @@
 # File Manager Files
 # --------------------------------------------
 file_manager/HELP.md
-file_manager/target/
 file_manager/!.mvn/wrapper/maven-wrapper.jar
 file_manager/!**/src/main/**/target/
 file_manager/!**/src/test/**/target/
