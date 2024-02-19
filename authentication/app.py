@@ -49,7 +49,6 @@ def register():
   username = data.get('username')
   password = data.get('password')
 
-  print(username, password)
   data = supabase.table('Users').select("*").eq('username', username).execute()
 
   if request.method == 'POST':
