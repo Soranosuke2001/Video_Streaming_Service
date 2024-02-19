@@ -64,4 +64,4 @@ def register():
 
 if __name__ == '__main__':
 
-  app.run(debug=True, port=app_config['app']['port'], host=app_config['app']['host'])
+  app.run(port=app_config['app']['port'], host=app_config['app']['host'])
