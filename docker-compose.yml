@@ -12,7 +12,6 @@ services:
 
   mysql:
     image: mysql:latest
-    # restart: on-failure
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=videos
@@ -24,7 +23,6 @@ services:
       - acit3495projectnetwork
     volumes:
       - mysql-data:/var/lib/mysql
-    # command: ["--upgrade=FORCE"]
 
   db_app:
     depends_on:

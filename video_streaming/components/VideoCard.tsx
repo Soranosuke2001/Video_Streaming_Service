@@ -8,6 +8,8 @@ import {
 
 import { FC } from "react";
 import { Button } from "./ui/button";
+import { Divide } from "lucide-react";
+import NoVideos from "./NoVideos";
 
 interface VideoCardProps {
   data: any;
@@ -24,15 +26,15 @@ type videoType = {
 };
 
 const VideoCard: FC<VideoCardProps> = ({ data }: any) => {
-  const videos = data["data"];
+  const videos: videoType[] = data["data"];
 
   return (
     <>
-      {videos.map((video: videoType) => {
+      {videos === null ? <NoVideos /> : videos.map((video: videoType) => {
         const { id, username, video_title, video_link, date_created } =
           video;
         return (
-          <Card key={id} className="w-[350px]">
+          <Card key={id} className="w-[350px] h-fit">
             <CardHeader>
               <CardTitle>{video_title}</CardTitle>
             </CardHeader>

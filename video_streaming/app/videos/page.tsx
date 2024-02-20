@@ -21,7 +21,7 @@ const Page: FC<pageProps> = ({}) => {
 
   return (
     <>
-      <div className="h-screen flex justify-evenly items-center">
+      <div className="flex flex-wrap pt-4 justify-evenly gap-4">
         {isLoading ? <Loading /> : <VideoCard data={data} />}
       </div>
     </>

@@ -70,8 +70,6 @@ const VideoUploadForm: FC<loginFormProps> = ({}) => {
         video_link: `${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/${user_id}/${String(selectedFile.name)}`
       }
 
-      console.log(video_data)
-
       const response_mysql = await fetch(process.env.NEXT_PUBLIC_DB_URL!, {
         method: "POST",
         headers: {
