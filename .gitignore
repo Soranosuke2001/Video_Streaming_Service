@@ -38,7 +38,7 @@ file_manager/.vscode/
 
 # MySQL DB Files
 # --------------------------------------------
-db_app/my_env
+db_app/venv
 
 # Authentication Files
 authentication/venv
