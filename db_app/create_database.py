@@ -4,21 +4,19 @@ from read_config import database_config
 
 user, password, hostname, port, db = database_config()
 
-connection = mysql.connector.connect(host=hostname, user=user, password=password)
+connected = False
 
-c = connection.cursor()
-
-c.execute(f"CREATE DATABASE IF NOT EXISTS {db}")
-
-connection.commit()
-connection.close()
-
-connection = mysql.connector.connect(host=hostname, user=user, password=password, database=db)
+while not connected:
+    try:
+        connection = mysql.connector.connect(host=hostname, user=user, password=password, database=db)
+        connected = True
+    except:
+        continue
 
 c = connection.cursor()
 
 create_table1 = '''
-                CREATE TABLE video_links
+                CREATE TABLE IF NOT EXISTS video_links
                 (
                     id INT NOT NULL AUTO_INCREMENT,
                     user_id VARCHAR(250) NOT NULL,

@@ -6,7 +6,7 @@
 
 set -e
 
-host="mysql"
+host="mysql_db"
 port="3306"
 user="sora"
 pass="sora"

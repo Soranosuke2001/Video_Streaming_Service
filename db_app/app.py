@@ -6,7 +6,7 @@ from db_queries import get_video_link, upload_video_link, get_all_videos
 
 
 @app.route('/fetch/video', methods=['GET'])
-@cross_origin(origins="http://localhost:4000")
+@cross_origin(origins="http://localhost:3000")
 def fetch_video():
     video_id = request.args.get('video_id')
     user_id = request.args.get('user_id')
@@ -17,7 +17,7 @@ def fetch_video():
 
 
 @app.route('/fetch/all', methods={'GET'})
-@cross_origin(origins="http://localhost:4000")
+@cross_origin(origins="http://localhost:3000")
 def fetch_all():
     status_code, message, videos = get_all_videos()
 
@@ -40,4 +40,4 @@ def upload_video():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8100)
+    app.run(host="0.0.0.0", port=8100)

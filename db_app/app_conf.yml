@@ -1,7 +1,7 @@
 version: 1
 datastore:
-  user: "sora"
-  password: "sora"
-  hostname: mysql
+  user: "root"
+  password: "password"
+  hostname: "mysql"
   port: 3306
   db: videos

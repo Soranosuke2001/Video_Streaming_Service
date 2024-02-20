@@ -12,21 +12,19 @@ services:
 
   mysql:
     image: mysql:latest
-    container_name: acit3495-mysql-server
-    restart: on-failure
+    # restart: on-failure
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=videos
       - MYSQL_USER=sora
       - MYSQL_PASSWORD=sora
-      - MYSQL_HOST=localhost
     ports:
       - "3306:3306"
     networks:
       - acit3495projectnetwork
     volumes:
       - mysql-data:/var/lib/mysql
-    command: ["--upgrade=FORCE"]
+    # command: ["--upgrade=FORCE"]
 
   db_app:
     depends_on:
@@ -63,7 +61,7 @@ services:
       context: ./video_streaming
       dockerfile: Dockerfile
     ports:
-      - "4000:4000"
+      - "3000:3000"
     networks:
       - acit3495projectnetwork
 
