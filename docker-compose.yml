@@ -2,9 +2,7 @@ version: "3.8"
 
 services:
   authentication:
-    build:
-      context: ./authentication
-      dockerfile: Dockerfile
+    image: soranosuke/authentication:latest
     ports:
       - "8090:8090"
     networks:
@@ -25,39 +23,31 @@ services:
       - mysql-data:/var/lib/mysql
 
   db_app:
-    depends_on:
-      mysql:
-        condition: service_started
-    build:
-      context: ./db_app
-      dockerfile: Dockerfile
+    image: soranosuke/db_app:latest
     ports:
       - "8100:8100"
     networks:
       - acit3495projectnetwork
+    depends_on:
+      mysql:
+        condition: service_started
 
   file-manager:
-    build:
-      context: ./file_manager
-      dockerfile: Dockerfile
+    image: soranosuke/file_manager:latest
     ports:
       - "8080:8080"
     networks:
       - acit3495projectnetwork
 
   upload-video:
-    build:
-      context: ./upload_video
-      dockerfile: Dockerfile
+    image: soranosuke/upload_video:latest
     ports:
       - "8200:8200"
     networks:
       - acit3495projectnetwork
 
   video-streaming:
-    build:
-      context: ./video_streaming
-      dockerfile: Dockerfile
+    image: soranosuke/video_streaming:latest
     ports:
       - "3000:3000"
     networks:
