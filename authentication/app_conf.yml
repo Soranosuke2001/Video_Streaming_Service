@@ -2,7 +2,7 @@ app:
   port: 8090
   host: "0.0.0.0"
 cors:
-  origin: ["http://localhost:3000", "http://localhost:8200"]
+  origin: ["http://video-streaming-service", "http://upload-video-service"]
 supabase:
   url: "https://iuogaflxhcgbzrxzdjod.supabase.co"
   key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1b2dhZmx4aGNnYnpyeHpkam9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgxMjg4MDMsImV4cCI6MjAyMzcwNDgwM30.5WduIf8zhdl4Ng_nS4yuG-3VysSt-d774EWha3dh5zQ"

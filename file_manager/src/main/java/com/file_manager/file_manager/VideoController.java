@@ -34,7 +34,7 @@ public class VideoController {
     
 
     @PostMapping("/upload")
-    @CrossOrigin(origins = "http://localhost:8200", allowCredentials = "true")
+    @CrossOrigin(origins = "http://upload-video-service", allowCredentials = "true")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @CookieValue("user_id") String userID) {
         try {
             String key = userID + "/" + file.getOriginalFilename();

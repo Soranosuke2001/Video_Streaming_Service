@@ -2,6 +2,6 @@ version: 1
 datastore:
   user: "root"
   password: "password"
-  hostname: "mysql"
+  hostname: mysql-service
   port: 3306
   db: videos
