@@ -14,7 +14,7 @@ const Page: FC<pageProps> = ({}) => {
     fetch(process.env.NEXT_PUBLIC_FETCH_VID_URL!)
       .then((response) => response.json())
       .then((result) => {
-        setData(result);
+        setData(result.message);
         setIsLoading(false);
       });
   }, []);

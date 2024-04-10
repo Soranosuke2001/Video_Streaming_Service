@@ -36,6 +36,7 @@ const LoginForm: FC<loginFormProps> = ({}) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setSubmitting(true);
+
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_LOGIN_URL!, {
         method: "POST",

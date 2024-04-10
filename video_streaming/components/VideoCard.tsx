@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Card,
   CardContent,
@@ -8,7 +10,6 @@ import {
 
 import { FC } from "react";
 import { Button } from "./ui/button";
-import { Divide } from "lucide-react";
 import NoVideos from "./NoVideos";
 
 interface VideoCardProps {
@@ -25,12 +26,10 @@ type videoType = {
   date_created: string;
 };
 
-const VideoCard: FC<VideoCardProps> = ({ data }: any) => {
-  const videos: videoType[] = data["data"];
-
+const VideoCard: FC<VideoCardProps> = ({ data }: { data: videoType[] }) => {
   return (
     <>
-      {videos === null ? <NoVideos /> : videos.map((video: videoType) => {
+      {!data ? <NoVideos /> : data.map((video: videoType) => {
         const { id, username, video_title, video_link, date_created } =
           video;
         return (
