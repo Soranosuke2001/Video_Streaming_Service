@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: db-app
-        image: soranosuke/db_app:latest
+        image: us-west1-docker.pkg.dev/acit-3855-vm/video-streaming-service/db_app:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8100
 ---

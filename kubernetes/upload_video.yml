@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: upload-video
-        image: soranosuke/upload_video:latest
+        image: us-west1-docker.pkg.dev/acit-3855-vm/video-streaming-service/upload_video:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8200
 ---

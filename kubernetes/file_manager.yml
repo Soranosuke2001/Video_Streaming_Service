@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: file-manager
-        image: soranosuke/file_manager:latest
+        image: us-west1-docker.pkg.dev/acit-3855-vm/video-streaming-service/file_manager:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---

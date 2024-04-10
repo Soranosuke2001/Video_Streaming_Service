@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: video-streaming
-        image: soranosuke/video_streaming:latest
+        image: us-west1-docker.pkg.dev/acit-3855-vm/video-streaming-service/video_streaming:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
 ---
