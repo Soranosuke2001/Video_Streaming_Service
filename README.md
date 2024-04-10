@@ -31,7 +31,7 @@ The system microservices can be described as follows:
 
 -	The Authentication Services is a simple service to validate users credentials. 
 -	The File System service is a simple service to write and read files to/from file storage (HDD, AWS S3,…etc)
--	MySql DB service will have a list of videos and their corresponding (path/URL) on file storage. 
+-	MySql DB service will have a list of videos and their corresponding (path/URL) on file storage.
 
 ## Deliverables
 
