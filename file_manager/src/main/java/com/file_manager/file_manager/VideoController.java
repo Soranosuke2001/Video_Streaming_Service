@@ -12,7 +12,6 @@ import software.amazon.awssdk.core.sync.RequestBody;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -35,7 +34,7 @@ public class VideoController {
 
     @PostMapping("/upload")
     @CrossOrigin(origins = "http://upload-video-service", allowCredentials = "true")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @CookieValue("user_id") String userID) {
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("user_id") String userID) {
         try {
             String key = userID + "/" + file.getOriginalFilename();
 
