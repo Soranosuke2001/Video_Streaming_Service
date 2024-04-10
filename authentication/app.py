@@ -1,15 +1,14 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify
 from flask_cors import cross_origin
 import yaml
 from supabase import create_client, Client
-from datetime import timedelta
 
 app = Flask(__name__)
 
 with open('app_conf.yml', 'r') as yamlfile:
   app_config = yaml.load(yamlfile, Loader=yaml.FullLoader)
 
-origins: str = app_config['cors']['origin']
+origins = app_config['cors']['origin']
 supabase_url: str = app_config['supabase']['url']
 supabase_key: str = app_config['supabase']['key']
 supabase: Client = create_client(supabase_url, supabase_key)
@@ -32,12 +31,13 @@ def login():
     user = result.data[0]
 
     if user['password'] == password:
-      response = make_response(jsonify({"message": "Authentication successful!", "user_id": user['user_id']}))
-      response.set_cookie("login", "validated", max_age=timedelta(days=7))
-      response.set_cookie("user_id", user['user_id'], max_age=timedelta(days=7))
-      response.set_cookie("username", user['username'], max_age=timedelta(days=7))
-
-      return response, 202
+      response = {
+        "message": "Authentication successful!",
+        "login": "validated",
+        "user_id": user['user_id'],
+        "username": user['username']
+      }
+      return jsonify(response), 202
     else:
       return "Invalid credentials!", 404
 
