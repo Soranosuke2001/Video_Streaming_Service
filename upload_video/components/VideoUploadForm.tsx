@@ -83,6 +83,8 @@ const VideoUploadForm: FC<loginFormProps> = ({}) => {
         throw new Error("There was an error signing you in");
       }
 
+      console.log(response_java)
+
       toast.success("Video was successfully uploaded!");
 
       setTimeout(() => {
